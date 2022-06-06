@@ -1,11 +1,6 @@
 # lit_text_message component
 Use this component to send a text message (powered by Twilio).
 
-This ⚡ [Lightning component](lightning.ai) ⚡ was generated automatically with:
-
-```bash
-lightning init component lit_text_message
-```
 
 ## 1. Install lit message 
 First, install lit_text_message 
