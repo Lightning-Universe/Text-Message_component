@@ -49,7 +49,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-py${{ matrix.python-version }}-
 
-    - name: Clone Template React UI Repo
+    - name: Clone Lightning
       uses: actions/checkout@v3
       with:
         repository: PyTorchLightning/lightning
@@ -74,6 +74,11 @@ jobs:
       shell: bash
 
     - name: Tests
+      env:
+        TEST_TWILIO_SID: ${{secrets.TEST_TWILIO_SID}}
+        TEST_TWILIO_AUTH_TOKEN: ${{secrets.TEST_TWILIO_AUTH_TOKEN}}
+        TEST_TWILIO_PHONE_NUMBER: ${{secrets.TEST_TWILIO_PHONE_NUMBER}}
+        TEST_TWILIO_RECEIVER_PHONE_NUMBER: ${{secrets.TEST_TWILIO_RECEIVER_PHONE_NUMBER}}
       run: |
         coverage run --source lit_text_message -m py.test lit_text_message tests -v --junitxml=junit/test-results-${{ runner.os }}-${{ matrix.python-version }}.xml
 
