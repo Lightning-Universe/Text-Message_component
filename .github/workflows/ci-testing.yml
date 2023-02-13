@@ -44,7 +44,7 @@ jobs:
         TEST_TWILIO_PHONE_NUMBER: ${{secrets.TEST_TWILIO_PHONE_NUMBER}}
         TEST_TWILIO_RECEIVER_PHONE_NUMBER: ${{secrets.TEST_TWILIO_RECEIVER_PHONE_NUMBER}}
       run: |
-        coverage run --source lit_text_message -m py.test lit_text_message tests -v --junitxml=junit/test-results-${{ runner.os }}-${{ matrix.python-version }}.xml
+        coverage run --source lit_text_message -m pytest lit_text_message tests -v --junitxml=junit/test-results-${{ runner.os }}-${{ matrix.python-version }}.xml
 
     - name: Statistics
       if: success()
